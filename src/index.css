@@ -11,3 +11,76 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.NavBar{
+  display: flex;
+  justify-content: space-between;
+  background:linear-gradient(135deg,#f0836d,#dd2476);
+  padding: 10px;
+  
+}
+.NavBar :nth-child(1){
+  display: flex;
+  gap: 20px;
+  text-decoration: none;
+  color: aliceblue;
+  font-weight: bolder;
+}
+.NavBar :nth-child(2) input{
+  border-radius: 20px;
+  border: none;
+  height: 25px;
+}
+.AddTaskHolder{
+  height: 400px;
+  width: 400px;
+  background:linear-gradient(135deg,#f0836d,#dd2476);;
+  justify-self: center;
+  margin-top: 4%;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  border-radius: 10px;
+  border: 2px solid red;
+  backdrop-filter: blur(10px);
+  color: aliceblue;
+  font-weight: bolder;
+}
+.AddTaskHolder input{
+  margin:3%;
+  border:none;
+  height: 30px;
+  width: 100%;
+  border-radius: 10px;
+  position: relative;
+  left: -10px;
+}
+.AddTaskHolder textarea{
+  margin-top:3%;
+  border:none;
+  
+  border-radius: 10px;
+}
+.AddTaskHolder div{
+  display: flex;
+  flex-direction: column;
+}
+.radioHolders{
+  display: flex;
+  margin: 0;
+  height: fit-content;
+  justify-content:space-between;
+
+}
+.Labels{
+  margin-top: 3%;
+  font-size: larger;
+}
+.AddTaskHolder button{
+  padding: 2%;
+  border-radius: 10px;
+  font-size: larger;
+  font-weight: bolder;
+  color: #dd2476;
+  border: none;
+}
+
