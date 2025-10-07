@@ -33,7 +33,7 @@ code {
 .AddTaskHolder{
   height: 400px;
   width: 400px;
-  background:linear-gradient(135deg,#f0836d,#dd2476);;
+  background:linear-gradient(135deg,#f0836d,#dd2476);
   justify-self: center;
   margin-top: 4%;
   display: flex;
@@ -53,6 +53,13 @@ code {
   border-radius: 10px;
   position: relative;
   left: -10px;
+ 
+}
+input{
+  padding: 5px;
+}
+textarea{
+  padding: 5px;
 }
 .AddTaskHolder textarea{
   margin-top:3%;
@@ -68,6 +75,7 @@ code {
   display: flex;
   margin: 0;
   height: fit-content;
+  width: 600px;
   justify-content:space-between;
 
 }
@@ -83,4 +91,56 @@ code {
   color: #dd2476;
   border: none;
 }
+.tasksHolder{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 10px;
+  justify-content: center;
 
+}
+.taskCard{
+  background: linear-gradient(135deg,#f0836d,#dd2476);;;
+  border-radius: 10px;
+  padding: 10px;
+  color: aliceblue;
+  position: relative;
+  height: 150px;
+  width: 200px;
+  position: relative;
+}
+.badge{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: pink;
+  font: bolder;
+  padding: 4px;
+  border-radius: 10px;
+  font-size: larger;
+ 
+  
+}
+.buttonHolder{
+  position: absolute;
+  display: flex;
+  width: inherit;
+  justify-content: space-between;
+  bottom: 0;
+  
+}
+.buttonHolder button{
+ border-radius: 10px;
+ padding: 10px;
+ color: #dd2476;
+ border: 1px solid #dd2476;
+ font-weight: bolder;
+  
+} 
+#descriptionHolder{
+  height: 30px;
+  overflow: scroll;
+  scrollbar-width: none;
+  padding: 10px;
+  margin-bottom: 2%;
+}
