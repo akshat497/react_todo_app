@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { createToDo } from "../../Context/ToDoContext";
 import { toast } from "react-toastify";
+import { Tasks } from "./Tasks";
 
 export const Home = () => {
   const {
@@ -12,6 +13,11 @@ export const Home = () => {
     setCompleted,
     important,
     setImportant,
+    isEditing,
+    editingIndex,
+    tasks,
+    ExtractFromLocal,
+    price, setprice
   } = useContext(createToDo);
   function AddTask() {
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
@@ -20,6 +26,7 @@ export const Home = () => {
       description,
       important,
       completed,
+      price
     };
     tasks.push(obj);
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -34,6 +41,30 @@ export const Home = () => {
       theme: "light",
     });
   }
+
+   function EditTask(){
+    const copytasks=[...tasks];
+    //tasks.         copyTasks
+  //  0 {}               0 {}
+  //  1 {}               1 {}
+  //  2 {}               2 {}
+  //  3 {}               3 {}
+    copytasks[editingIndex]={
+      title,
+      description,
+      important,
+      completed
+    }
+    console.log(copytasks)
+    localStorage.setItem("tasks",JSON.stringify(copytasks));
+    ExtractFromLocal();
+    toast.success("Edited successfully", {
+          progress: false,
+          hideProgressBar: true,
+        });
+        
+
+  }
   return (
     <div className="AddTaskHolder">
       <label>Title:-</label>
@@ -43,6 +74,15 @@ export const Home = () => {
         value={title}
         onChange={(e) => {
           setTitle(e.target.value);
+        }}
+      />
+      <label>Price:-</label>
+      <input
+        type="text"
+        placeholder="Enter price here"
+        value={price}
+        onChange={(e) => {
+          setprice(e.target.value);
         }}
       />
       <label>Description:-</label>
@@ -81,7 +121,11 @@ export const Home = () => {
           />
         </label>
       </div>
-      <button onClick={AddTask}>Add Task</button>
+      {isEditing? 
+      <button onClick={EditTask}>Edit Task</button>
+      : <button onClick={AddTask}>Add Task</button>
+      }
+     
     </div>
   );
 };

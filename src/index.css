@@ -28,10 +28,11 @@ code {
 .NavBar :nth-child(2) input{
   border-radius: 20px;
   border: none;
+  color: #dd2476;
   height: 25px;
 }
 .AddTaskHolder{
-  height: 400px;
+  height: 500px;
   width: 400px;
   background:linear-gradient(135deg,#f0836d,#dd2476);
   justify-self: center;
@@ -105,7 +106,7 @@ textarea{
   padding: 10px;
   color: aliceblue;
   position: relative;
-  height: 150px;
+  height: 200px;
   width: 200px;
   position: relative;
 }
@@ -125,7 +126,7 @@ textarea{
   position: absolute;
   display: flex;
   width: inherit;
-  justify-content: space-between;
+  justify-content: space-around;
   bottom: 0;
   
 }

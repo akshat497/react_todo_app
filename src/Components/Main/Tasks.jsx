@@ -5,14 +5,17 @@ import { Modal } from "../Common/Modal";
 import { Home } from "./Home";
 
 export const Tasks = () => {
-  const { tasks, setTasks, searchedValue,title,setTitle,description,setDescription,completed,setCompleted,important,setImportant, setsearchedValue } =
+  const {ExtractFromLocal, setEditingIndex, tasks,isEditing, setIsEditing, setTasks, searchedValue,title,setTitle,description,setDescription,completed,setCompleted,important,setImportant, setsearchedValue } =
     useContext(createToDo);
+    
 
   const [filteredTasks, setFilteredTasks] = useState([]);
   useEffect(() => {
     const response = JSON.parse(localStorage.getItem("tasks")) || [];
     setTasks(response);
   }, []);
+
+  
 
   useEffect(() => {
     const filteredArray = tasks?.filter((task) =>
@@ -26,28 +29,30 @@ export const Tasks = () => {
       setFilteredTasks(filteredArray);
     }
   }, [searchedValue, tasks]);
+  
 
   function deleteTask(index) {
     tasks.splice(index, 1);
     localStorage.setItem("tasks", JSON.stringify(tasks));
-    const response = JSON.parse(localStorage.getItem("tasks")) || [];
-    setTasks(response);
+    ExtractFromLocal()
     toast.success("Deleted successfully", {
       progress: false,
       hideProgressBar: true,
     });
   }
-  function handleEdit(item){
+  function handleEdit(item,index){
     setTitle(item.title)
     setDescription(item.description)
     setImportant(item.important)
     setCompleted(item.completed)
+    setIsEditing(true)
+    setEditingIndex(index)
     
 
   }
   return (
     <>
-    <Modal component={<Home/>} title={title} description={description} important={important} completed={completed}/>
+    <Modal component={<Home/>} />
       <div className="tasksHolder">
         {filteredTasks?.map((task, index) => {
           return (
@@ -62,11 +67,12 @@ export const Tasks = () => {
                 </label>
                 <h3>{task.title}</h3>
                 <div id="descriptionHolder">{task.description}</div>
+                <div id="descriptionHolder">{task?.price}</div>
                 <div className="buttonHolder">
                   <button
                     style={{ backgroundColor: "skyblue", color: "aliceblue" }}
                     data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    onClick={()=>{handleEdit(task)}}
+                    onClick={()=>{handleEdit(task,index)}}
                   >
                     Edit
                   </button>

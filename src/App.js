@@ -6,6 +6,7 @@ import { ToDoContext } from './Context/ToDoContext'
 import { ToastContainer } from 'react-toastify';
 import { Tasks } from './Components/Main/Tasks'
 import { PendingTasks } from './Components/Main/PendingTasks'
+import { CompletedTasks } from './Components/Main/CompletedTasks'
 export default function App() {
   return (
    <>
@@ -16,6 +17,7 @@ export default function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/tasks' element={<Tasks/>}/>
       <Route path='/pendingtasks' element={<PendingTasks/>}/>
+         <Route path='/completedtasks' element={<CompletedTasks/>}/>
     </Routes>
     </ToDoContext>
    </>
